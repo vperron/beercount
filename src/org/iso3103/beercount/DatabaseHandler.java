@@ -71,12 +71,14 @@ class DatabaseHandler extends SQLiteOpenHelper {
 
 		Cursor cursor = db.query(TABLE_DRINKS, new String[] { KEY_ID, KEY_TIMESTAMP, KEY_DRINKTYPE }, 
 				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null, null, null);
-		
-		if (cursor != null)
-			cursor.moveToFirst();
 
-        return new Drink(Integer.parseInt(cursor.getString(0)),
+        if (cursor.moveToFirst()) {
+            return new Drink(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), Type.values()[cursor.getInt(2)]);
+        } else {
+            // TODO: what to do here? Probably not that.
+            return null;
+        }
 	}
 	
 	public List<Drink> getAllDrinks() {
