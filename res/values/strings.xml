@@ -3,5 +3,20 @@
 
     <string name="hello">Hello World, BeerCountActivity!</string>
     <string name="app_name">BeerCount</string>
+    <string name="about">About</string>
+    <string name="reset">Reset</string>
+    <string name="no">No</string>
+    <string name="pints">Pints: %d</string>
+    <string name="bottles">Bottles: %d</string>
+    <string name="halfs">Halfs: %d</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="confirm_erase_local">Are you sure you want to erase the local stats ?</string>
+    <string name="yes">Yes</string>
+    <string name="beercount_2013">BeerCount 2013 :)</string>
+    <string name="license"><![CDATA[You can\'t cheat no more.
+Victor Perron
+License: GPLv3.
+<victor@iso3103.net>]]></string>
+    <string name="ok">Ok</string>
 
 </resources>

@@ -23,4 +23,8 @@
         </activity>
     </application>
     
+    <service 
+        android:enabled="true"
+   		android:name=".BeerCountService"/>
+    
 </manifest>
