@@ -1,8 +1,5 @@
 package org.iso3103.beercount;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.iso3103.beercount.Drink.Type;
 
 import android.content.ContentValues;
@@ -10,7 +7,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.YuvImage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Following code is courtesy from AndroidHive and freely adapted.
@@ -20,7 +19,7 @@ import android.graphics.YuvImage;
  * Victor Perron
  */
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+class DatabaseHandler extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "beerCountDb";
@@ -72,14 +71,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		Cursor cursor = db.query(TABLE_DRINKS, new String[] { KEY_ID, KEY_TIMESTAMP, KEY_DRINKTYPE }, 
 				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null, null, null);
-		
-		if (cursor != null)
-			cursor.moveToFirst();
 
-		Drink drink = new Drink(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1), Drink.Type.values()[cursor.getInt(2)]);
-		
-		return drink;
+        if (cursor.moveToFirst()) {
+            return new Drink(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), Type.values()[cursor.getInt(2)]);
+        } else {
+            // TODO: what to do here? Probably not that.
+            return null;
+        }
 	}
 	
 	public List<Drink> getAllDrinks() {
