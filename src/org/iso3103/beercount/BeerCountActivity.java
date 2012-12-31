@@ -116,7 +116,7 @@ public class BeerCountActivity extends Activity {
 		case R.id.about:
             helpBuilder.setTitle(getString(string.beercount_2013));
             helpBuilder.setMessage(getString(string.license));
-            helpBuilder.setPositiveButton(getString(string.ok),
+            helpBuilder.setPositiveButton(getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
