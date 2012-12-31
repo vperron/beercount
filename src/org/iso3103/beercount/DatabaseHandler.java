@@ -1,8 +1,5 @@
 package org.iso3103.beercount;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.iso3103.beercount.Drink.Type;
 
 import android.content.ContentValues;
@@ -10,7 +7,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.YuvImage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Following code is courtesy from AndroidHive and freely adapted.
@@ -76,10 +75,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		if (cursor != null)
 			cursor.moveToFirst();
 
-		Drink drink = new Drink(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1), Drink.Type.values()[cursor.getInt(2)]);
-		
-		return drink;
+        return new Drink(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), Type.values()[cursor.getInt(2)]);
 	}
 	
 	public List<Drink> getAllDrinks() {
