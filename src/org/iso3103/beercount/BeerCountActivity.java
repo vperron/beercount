@@ -24,13 +24,17 @@ public class BeerCountActivity extends Activity {
 
 	private static final String TAG = BeerCountActivity.class.getName();
 	
-	protected static final long VIBRATION_DURATION = 50;
+	private static final long VIBRATION_DURATION = 50;
 
 	int pintCount, halfCount, bottleCount;
 	
-	Vibrator hapticHandle;
-	ImageButton pintBtn, bottleBtn, halfBtn; 
-	TextView pintView, bottleView, halfView;
+	private Vibrator hapticHandle;
+	private ImageButton pintBtn;
+    private ImageButton bottleBtn;
+    private ImageButton halfBtn;
+	private TextView pintView;
+    private TextView bottleView;
+    private TextView halfView;
 
 	private DrinkInterface drinkInterface;
 
@@ -111,12 +115,12 @@ public class BeerCountActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-		AlertDialog helpDialog = null;
+		AlertDialog helpDialog;
 		switch (item.getItemId()) {
 		case R.id.about:
             helpBuilder.setTitle(getString(string.beercount_2013));
             helpBuilder.setMessage(getString(string.license));
-            helpBuilder.setPositiveButton(getString(string.ok),
+            helpBuilder.setPositiveButton(getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

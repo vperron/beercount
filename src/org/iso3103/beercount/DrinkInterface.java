@@ -2,9 +2,9 @@ package org.iso3103.beercount;
 
 import android.content.Context;
 
-public class DrinkInterface {
+class DrinkInterface {
 	
-	private DatabaseHandler db;
+	private final DatabaseHandler db;
 
 	public DrinkInterface(Context c) {
 		db = new DatabaseHandler(c);
@@ -17,12 +17,8 @@ public class DrinkInterface {
 	public  int getDrinkCount(Drink.Type type) {
 		return db.getTypedDrinksCount(type);
 	}
-	
-	public void cancelDrink() {
-		
-	}
-	
-	private String ts() {
+
+    private String ts() {
 		return String.valueOf(System.currentTimeMillis() / 1000);
 	}
 

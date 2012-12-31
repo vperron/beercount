@@ -9,10 +9,10 @@ package org.iso3103.beercount;
 public class Drink {
 	
 	public enum Type {
-		HALFPINT, PINT, BOTTLE, WINE, HARD, SWEETS;  
-	};
-	
-	private int _id;
+		HALFPINT, PINT, BOTTLE, WINE, HARD, SWEETS
+    }
+
+    private int _id;
 	private String _timestamp;
 	private Type _type;
 	
