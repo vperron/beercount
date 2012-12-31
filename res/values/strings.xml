@@ -6,16 +6,20 @@
     <string name="about">About</string>
     <string name="reset">Reset</string>
     <string name="no">No</string>
-    <string name="pints">Pints: %d</string>
-    <string name="bottles">Bottles: %d</string>
-    <string name="halfs">Halfs: %d</string>
-    <string name="confirmation">Confirmation</string>
-    <string name="confirm_erase_local">Are you sure you want to erase the local stats ?</string>
+    <string name="count_text">Pints: %1$d\nHalf-pints: %2$d\n33\'s bottle: %3$d\nWine glasses: %4$d\nCocktails: %5$d\n</string>
+    <string name="confirmation">Reset stats</string>
+    <string name="confirm_erase_local">This will erase all your stats definitely ! Are you sure ?</string>
     <string name="yes">Yes</string>
-    <string name="beercount_2013">BeerCount 2013 :)</string>
-    <string name="license"><![CDATA[Scary app !\n
-Victor Perron\n
+    <string name="beercount_2013">BeerCount</string>
+    <string name="license"><![CDATA[HHQQP official Android app :)\n
+Original idea: the Faggots.
 License: GPLv3.\n
-<victor@iso3103.net>]]></string>
+<beercount@iso3103.net>]]></string>
+
+    <string name="pint">Pint</string>
+    <string name="halfpint">Half-a-pint</string>
+    <string name="wine">Wine glass</string>
+    <string name="cocktail">Cocktail</string>
+    <string name="bottle">33cl Bottle</string>
 
 </resources>

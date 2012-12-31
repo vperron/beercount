@@ -1,5 +1,7 @@
 package org.iso3103.beercount;
 
+import java.util.List;
+
 import android.content.Context;
 
 class DrinkInterface {
@@ -24,6 +26,20 @@ class DrinkInterface {
 
 	public void deleteAllDrinks() {
 		db.deleteAllDrinks();
+	}
+
+	public void undoLastDrink() {
+		List<Drink> drinks = db.getAllDrinks();
+		if(drinks.size() > 0) {
+			Drink latest = drinks.get(0);
+			long latestsTimestamp = Long.parseLong(latest.getTimestamp()); 
+			for(Drink d: drinks) {
+				long currentTimestamp = Long.parseLong(d.getTimestamp());   
+				if(currentTimestamp > latestsTimestamp)
+					latest = d;
+			}
+			db.deleteDrink(latest);
+		}
 	}
 
 }

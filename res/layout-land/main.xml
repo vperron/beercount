@@ -4,14 +4,16 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background_general" >
 
-    <TableRow android:layout_weight="1" android:layout_width="fill_parent">
+    <TableRow 
+        android:layout_weight="1" 
+        android:layout_height="fill_parent">
         <Button
         android:id="@+id/pint_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/pint"
-        android:textColor="#CCCCCC"
+        android:drawableTop="@drawable/pint128"
         android:background="@drawable/background_buttons"
+        android:textColor="#CCCCCC"
         android:layout_margin="1sp"
         android:drawablePadding="2sp"
         android:textStyle="bold"
@@ -21,7 +23,7 @@
         android:id="@+id/half_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/half"
+        android:drawableTop="@drawable/half128"
         android:background="@drawable/background_buttons"
         android:textColor="#CCCCCC"
         android:layout_margin="1sp"
@@ -29,13 +31,11 @@
         android:textStyle="bold"
         android:text="@string/halfpint">
         </Button>
-    </TableRow>
-    <TableRow android:layout_weight="1" android:layout_width="fill_parent">
         <Button
         android:id="@+id/bottle_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/bottle"
+        android:drawableTop="@drawable/bottle128"
         android:background="@drawable/background_buttons"
         android:textColor="#CCCCCC"
         android:layout_margin="1sp"
@@ -43,11 +43,13 @@
         android:textStyle="bold"
         android:text="@string/bottle">
         </Button>
+    </TableRow>
+    <TableRow android:layout_weight="1" android:layout_height="fill_parent">
         <Button
         android:id="@+id/wine_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/wine"
+        android:drawableTop="@drawable/wine128"
         android:background="@drawable/background_buttons"
         android:textColor="#CCCCCC"
         android:layout_margin="1sp"
@@ -55,13 +57,11 @@
         android:textStyle="bold"
         android:text="@string/wine">
         </Button>
-    </TableRow>
-    <TableRow android:layout_weight="1" android:layout_width="fill_parent">
         <Button
         android:id="@+id/cocktail_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/cocktail"
+        android:drawableTop="@drawable/cocktail128"
         android:background="@drawable/background_buttons"
         android:textColor="#CCCCCC"
         android:layout_margin="1sp"

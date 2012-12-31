@@ -1,14 +1,11 @@
 package org.iso3103.beercount;
 
 import org.iso3103.beercount.Drink.Type;
-import org.iso3103.beercount.R.string;
-
-
+import org.iso3103.beercount.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.Menu;
@@ -16,7 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -24,17 +21,13 @@ public class BeerCountActivity extends Activity {
 
 	private static final String TAG = BeerCountActivity.class.getName();
 	
-	private static final long VIBRATION_DURATION = 50;
+	private static final long VIBRATION_DURATION = 50; // millisecs
 
 	int pintCount, halfCount, bottleCount;
 	
 	private Vibrator hapticHandle;
-	private ImageButton pintBtn;
-    private ImageButton bottleBtn;
-    private ImageButton halfBtn;
-	private TextView pintView;
-    private TextView bottleView;
-    private TextView halfView;
+	private Button pintBtn, bottleBtn, halfBtn, wineBtn, cocktailBtn;
+    private TextView countView;
 
 	private DrinkInterface drinkInterface;
 
@@ -50,16 +43,14 @@ public class BeerCountActivity extends Activity {
 
 		initActivityControls();
 		
-		updateDrinkView(pintView, R.string.pints, Type.PINT);
-		updateDrinkView(bottleView, R.string.bottles, Type.BOTTLE);
-		updateDrinkView(halfView, R.string.halfs, Type.HALFPINT);
+		updateCountView();
 
 		pintBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				hapticHandle.vibrate(VIBRATION_DURATION);
 				drinkInterface.addDrink(Type.PINT);
-				updateDrinkView(pintView, R.string.pints, Type.PINT);
+				updateCountView();
 			}
 		});
 
@@ -68,7 +59,7 @@ public class BeerCountActivity extends Activity {
 			public void onClick(View v) {
 				hapticHandle.vibrate(VIBRATION_DURATION);
 				drinkInterface.addDrink(Type.BOTTLE);
-				updateDrinkView(bottleView, R.string.bottles, Type.BOTTLE);
+				updateCountView();
 			}
 		});
 
@@ -77,27 +68,28 @@ public class BeerCountActivity extends Activity {
 			public void onClick(View v) {
 				hapticHandle.vibrate(VIBRATION_DURATION);
 				drinkInterface.addDrink(Type.HALFPINT);
-				updateDrinkView(halfView, R.string.halfs, Type.HALFPINT);
+				updateCountView();
+			}
+		});
+		
+		cocktailBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				hapticHandle.vibrate(VIBRATION_DURATION);
+				drinkInterface.addDrink(Type.COCKTAIL);
+				updateCountView();
+			}
+		});
+		
+		wineBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				hapticHandle.vibrate(VIBRATION_DURATION);
+				drinkInterface.addDrink(Type.WINE);
+				updateCountView();
 			}
 		});
 
-	}
-
-	private void updateDrinkView(TextView view, int resid, Type type) {
-		/* TODO: More clever function which gets the type only and
-		 * updates the correct view with the right text from resources.
-		 */
-		view.setText(getString(resid, drinkInterface.getDrinkCount(type)));
-	}
-
-	private void initActivityControls() {
-		pintBtn = (ImageButton) findViewById(R.id.pint_btn);
-		bottleBtn = (ImageButton) findViewById(R.id.bottle_btn);
-		halfBtn = (ImageButton) findViewById(R.id.half_btn);
-
-		pintView = (TextView) findViewById(R.id.pintcount);
-		bottleView = (TextView) findViewById(R.id.bottlecount);
-		halfView = (TextView) findViewById(R.id.halfcount);
 	}
 
 	@Override
@@ -117,9 +109,13 @@ public class BeerCountActivity extends Activity {
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		AlertDialog helpDialog;
 		switch (item.getItemId()) {
+		case R.id.undo:
+			drinkInterface.undoLastDrink();
+			updateCountView();
+			return true;
 		case R.id.about:
-            helpBuilder.setTitle(getString(string.beercount_2013));
-            helpBuilder.setMessage(getString(string.license));
+            helpBuilder.setTitle(getString(R.string.beercount_2013));
+            helpBuilder.setMessage(getString(R.string.license));
             helpBuilder.setPositiveButton(getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -131,19 +127,17 @@ public class BeerCountActivity extends Activity {
             helpDialog.show();
 			return true;
 		case R.id.reset:
-            helpBuilder.setTitle(getString(string.confirmation));
-            helpBuilder.setMessage(getString(string.confirm_erase_local));
-            helpBuilder.setPositiveButton(getString(string.yes),
+            helpBuilder.setTitle(getString(R.string.confirmation));
+            helpBuilder.setMessage(getString(R.string.confirm_erase_local));
+            helpBuilder.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                         	drinkInterface.deleteAllDrinks();
-                    		updateDrinkView(pintView, R.string.pints, Type.PINT);
-                    		updateDrinkView(bottleView, R.string.bottles, Type.BOTTLE);
-                    		updateDrinkView(halfView, R.string.halfs, Type.HALFPINT);
+                        	updateCountView();
                         }
                     });
-            helpBuilder.setNegativeButton(getString(string.no),
+            helpBuilder.setNegativeButton(getString(R.string.no),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -156,6 +150,25 @@ public class BeerCountActivity extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	private void initActivityControls() {
+		pintBtn = (Button) findViewById(R.id.pint_btn);
+		bottleBtn = (Button) findViewById(R.id.bottle_btn);
+		halfBtn = (Button) findViewById(R.id.half_btn);
+		wineBtn = (Button) findViewById(R.id.wine_btn);
+		cocktailBtn = (Button) findViewById(R.id.cocktail_btn);
+	
+		countView = (TextView) findViewById(R.id.counts);
+	}
+
+	private void updateCountView() {
+		countView.setText(getString(R.string.count_text, 
+				drinkInterface.getDrinkCount(Type.PINT),
+				drinkInterface.getDrinkCount(Type.HALFPINT),
+				drinkInterface.getDrinkCount(Type.BOTTLE),
+				drinkInterface.getDrinkCount(Type.WINE),
+				drinkInterface.getDrinkCount(Type.COCKTAIL)));
 	}
 
 }

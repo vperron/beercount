@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
  
-<item android:id="@+id/about"
-android:title="About" />
+<item android:id="@+id/undo"
+android:title="Undo" />
 <item android:id="@+id/reset"
 android:title="Reset" />
+<item android:id="@+id/about"
+android:title="About" />
 
 </menu>
