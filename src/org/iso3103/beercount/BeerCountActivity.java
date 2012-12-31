@@ -42,7 +42,7 @@ public class BeerCountActivity extends Activity {
 		drinkInterface = new DrinkInterface(this);
 		hapticHandle = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 		
-		startService(new Intent(getApplicationContext(), BeerCountService.class));
+		// startService(new Intent(getApplicationContext(), BeerCountService.class));
 
 		initActivityControls();
 		

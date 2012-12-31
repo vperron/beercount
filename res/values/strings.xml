@@ -13,9 +13,9 @@
     <string name="confirm_erase_local">Are you sure you want to erase the local stats ?</string>
     <string name="yes">Yes</string>
     <string name="beercount_2013">BeerCount 2013 :)</string>
-    <string name="license"><![CDATA[You can\'t cheat no more.
-Victor Perron
-License: GPLv3.
+    <string name="license"><![CDATA[Scary app !\n
+Victor Perron\n
+License: GPLv3.\n
 <victor@iso3103.net>]]></string>
     <string name="ok">Ok</string>
 

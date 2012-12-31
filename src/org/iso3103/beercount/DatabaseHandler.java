@@ -125,7 +125,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void deleteAllDrinks() {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(TABLE_DRINKS, null, null);
-		createDrinksTable(db);
 		db.close();
 	}
 
