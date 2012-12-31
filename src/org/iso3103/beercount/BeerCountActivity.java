@@ -115,7 +115,7 @@ public class BeerCountActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-		AlertDialog helpDialog = null;
+		AlertDialog helpDialog;
 		switch (item.getItemId()) {
 		case R.id.about:
             helpBuilder.setTitle(getString(string.beercount_2013));
