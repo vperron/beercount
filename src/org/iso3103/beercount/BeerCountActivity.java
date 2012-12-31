@@ -24,13 +24,17 @@ public class BeerCountActivity extends Activity {
 
 	private static final String TAG = BeerCountActivity.class.getName();
 	
-	protected static final long VIBRATION_DURATION = 50;
+	private static final long VIBRATION_DURATION = 50;
 
 	int pintCount, halfCount, bottleCount;
 	
-	Vibrator hapticHandle;
-	ImageButton pintBtn, bottleBtn, halfBtn; 
-	TextView pintView, bottleView, halfView;
+	private Vibrator hapticHandle;
+	private ImageButton pintBtn;
+    private ImageButton bottleBtn;
+    private ImageButton halfBtn;
+	private TextView pintView;
+    private TextView bottleView;
+    private TextView halfView;
 
 	private DrinkInterface drinkInterface;
 

@@ -19,7 +19,7 @@ import java.util.List;
  * Victor Perron
  */
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+class DatabaseHandler extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "beerCountDb";
