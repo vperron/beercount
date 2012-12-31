@@ -16,16 +16,14 @@ import android.os.IBinder;
  */
 public class BeerCountService extends Service{
 
-	private String userName;
-
-	@Override
+    @Override
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
 
 	@Override
 	public void onCreate() {
-		userName = getUserName();
+        final String userName = getUserName();
 		if(userName != null) {
 			// initZeroMq();
 		}
